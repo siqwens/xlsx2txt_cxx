@@ -23,8 +23,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+DISTFILES += \
+    libs/libQXlsxQt6.dll
 
-win32: LIBS += -LD:/QXlsx-master/build/ -lQXlsxQt6
 
-INCLUDEPATH += D:/QXlsx-master/QXlsx/header
-DEPENDPATH += D:/QXlsx-master/QXlsx/header
+win32: LIBS += -L$$PWD/libs/ -llibQXlsxQt6.dll
+
+INCLUDEPATH += $$PWD/libs/header
+DEPENDPATH += $$PWD/libs/header
